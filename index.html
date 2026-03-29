@@ -540,6 +540,25 @@
 
     </main>
 
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 dark:bg-neutral-900/90 backdrop-blur-2xl border-t border-neutral-200 dark:border-neutral-800 z-[50] pb-safe">
+        <div class="flex justify-around items-center h-16">
+            <button onclick="switchView('menu')" class="flex flex-col items-center gap-1 group mobile-nav-item" id="mobile-nav-menu">
+                <span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Menu</span>
+            </button>
+            <button onclick="switchView('deals')" class="flex flex-col items-center gap-1 group mobile-nav-item" id="mobile-nav-deals">
+                <span class="material-symbols-outlined text-[24px]">local_offer</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Deals</span>
+            </button>
+            <button onclick="switchView('locations')" class="flex flex-col items-center gap-1 group mobile-nav-item" id="mobile-nav-locations">
+                <span class="material-symbols-outlined text-[24px]">location_on</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Locations</span>
+            </button>
+        </div>
+    </nav>
+
     <!-- Footer -->
     <footer class="bg-neutral-900 text-white py-20 px-8">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -584,14 +603,30 @@
 
         function switchView(viewId) {
             document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
-            document.getElementById(viewId + '-view').classList.remove('hidden');
+            const targetView = document.getElementById(viewId + '-view');
+            if (targetView) targetView.classList.remove('hidden');
 
+            // Handle Desktop Nav
             document.querySelectorAll('.nav-link').forEach(l => {
                 l.classList.remove('text-red-700', 'border-b-2', 'border-red-700');
                 l.classList.add('text-neutral-600');
             });
-            document.getElementById('nav-' + viewId).classList.add('text-red-700', 'border-b-2', 'border-red-700');
-            document.getElementById('nav-' + viewId).classList.remove('text-neutral-600');
+            const desktopNav = document.getElementById('nav-' + viewId);
+            if (desktopNav) {
+                desktopNav.classList.add('text-red-700', 'border-b-2', 'border-red-700');
+                desktopNav.classList.remove('text-neutral-600');
+            }
+
+            // Handle Mobile Nav
+            document.querySelectorAll('.mobile-nav-item').forEach(btn => {
+                btn.classList.add('text-neutral-400');
+                btn.classList.remove('text-red-700');
+            });
+            const mobileNav = document.getElementById('mobile-nav-' + viewId);
+            if (mobileNav) {
+                mobileNav.classList.remove('text-neutral-400');
+                mobileNav.classList.add('text-red-700');
+            }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
             window.location.hash = viewId;

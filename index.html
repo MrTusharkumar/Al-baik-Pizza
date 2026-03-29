@@ -1,0 +1,671 @@
+<!-- Al-Baik Pizza - Full Experience (v2) -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Al-Baik Pizza | Premium Ordering</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary": "#ffefed",
+                        "surface-dim": "#d3d5d5",
+                        "primary-fixed": "#ff766b",
+                        "secondary": "#755700",
+                        "on-background": "#2d2f2f",
+                        "primary-fixed-dim": "#ff5a51",
+                        "secondary-fixed": "#ffca4d",
+                        "on-surface": "#2d2f2f",
+                        "primary-dim": "#a40010",
+                        "on-tertiary-container": "#490c77",
+                        "tertiary": "#7742a6",
+                        "on-tertiary-fixed-variant": "#531a80",
+                        "tertiary-container": "#d19aff",
+                        "surface-tint": "#b7131a",
+                        "error": "#b41340",
+                        "secondary-dim": "#664b00",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#dbdddd",
+                        "on-tertiary": "#fbeeff",
+                        "secondary-fixed-dim": "#f7ba00",
+                        "on-secondary-fixed-variant": "#674c00",
+                        "on-primary-fixed-variant": "#600005",
+                        "surface-container": "#e7e8e8",
+                        "inverse-on-surface": "#9c9d9d",
+                        "on-secondary-fixed": "#443100",
+                        "primary-container": "#ff766b",
+                        "primary": "#b7131a",
+                        "surface-bright": "#f6f6f6",
+                        "tertiary-fixed": "#d19aff",
+                        "error-dim": "#a70138",
+                        "on-error": "#ffefef",
+                        "tertiary-fixed-dim": "#c48bf4",
+                        "surface-container-low": "#f0f1f1",
+                        "on-error-container": "#510017",
+                        "tertiary-dim": "#6b3599",
+                        "on-secondary": "#fff1db",
+                        "error-container": "#f74b6d",
+                        "on-primary-container": "#4f0004",
+                        "on-secondary-container": "#5c4400",
+                        "inverse-primary": "#ff544b",
+                        "surface-variant": "#dbdddd",
+                        "background": "#f6f6f6",
+                        "on-surface-variant": "#5a5c5c",
+                        "surface": "#f6f6f6",
+                        "on-primary-fixed": "#000000",
+                        "outline": "#767777",
+                        "secondary-container": "#ffca4d",
+                        "inverse-surface": "#0c0f0f",
+                        "outline-variant": "#acadad",
+                        "surface-container-high": "#e1e3e3",
+                        "on-tertiary-fixed": "#280047"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .crave-scroll-gradient {
+            background: linear-gradient(180deg, #f6f6f6 0%, rgba(255, 118, 107, 0.05) 100%);
+        }
+
+        .view.hidden {
+            display: none;
+        }
+
+        .cart-item-anim {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-body text-on-surface antialiased overflow-x-hidden">
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl shadow-sm">
+        <div class="flex items-center justify-between px-6 py-3 max-w-7xl mx-auto">
+            <div class="flex items-center gap-8">
+                <h1 class="text-2xl font-black font-headline text-red-700 cursor-pointer tracking-tighter" onclick="switchView('deals')">
+                    AL-BAIK <span class="text-neutral-900">PIZZA</span>
+                </h1>
+                <div class="hidden md:flex gap-6 font-headline text-sm font-bold">
+                    <a class="nav-link text-neutral-600 hover:text-red-700 transition-all cursor-pointer" id="nav-menu"
+                        onclick="switchView('menu')">Menu</a>
+                    <a class="nav-link text-red-700 border-b-2 border-red-700 cursor-pointer" id="nav-deals"
+                        onclick="switchView('deals')">Deals</a>
+                    <a class="nav-link text-neutral-600 hover:text-red-700 transition-all cursor-pointer"
+                        id="nav-locations" onclick="switchView('locations')">Locations</a>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="relative p-2" onclick="openCart()">
+                    <span class="material-symbols-outlined text-red-700">shopping_cart</span>
+                    <span id="cart-count"
+                        class="absolute top-0 right-0 flex h-4 w-4 items-center justify-center bg-primary text-white rounded-full text-[10px] font-bold">0</span>
+                </button>
+                <button class="p-2"><span class="material-symbols-outlined text-red-700">account_circle</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CART SIDEBAR -->
+    <aside id="cartSidebar"
+        class="fixed right-0 top-0 h-full w-80 sm:w-96 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-2xl shadow-2xl z-[60] flex flex-col transform translate-x-full transition-transform duration-500 ease-in-out border-l border-outline-variant/10">
+        <div class="p-6 flex items-center justify-between">
+            <div class="flex flex-col gap-2">
+                <div class="bg-white p-2 rounded-2xl shadow-md inline-block mb-4">
+                    <img src="logo.jpg" alt="Al-Baik Pizza Logo" class="h-20 w-auto object-contain">
+                </div>
+                <h2 class="text-xl font-bold text-red-700 font-headline">Your Selection</h2>
+                <p class="text-xs text-on-surface-variant font-label uppercase tracking-widest">Fresh & Hot</p>
+            </div>
+            <button class="material-symbols-outlined text-neutral-500" onclick="closeCart()">close</button>
+        </div>
+
+        <div id="cart-items-container" class="flex-grow space-y-4 overflow-y-auto px-6 no-scrollbar">
+            <!-- Cart items are injected here via JS -->
+        </div>
+
+        <div class="p-6 bg-neutral-50 dark:bg-neutral-900/50 border-t border-neutral-200">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-bold uppercase tracking-widest opacity-50">Total Amount</span>
+                <span id="cart-total" class="text-xl font-black text-on-surface font-headline">Rs. 0</span>
+            </div>
+
+            <div class="space-y-3 mb-6">
+                <input class="w-full bg-white border rounded-lg px-4 py-2.5 text-sm" placeholder="Full Name" type="text"
+                    id="cust-name">
+                <input class="w-full bg-white border rounded-lg px-4 py-2.5 text-sm" placeholder="Phone Number"
+                    type="tel" id="cust-phone">
+                <textarea class="w-full bg-white border rounded-lg px-4 py-2.5 text-sm resize-none"
+                    placeholder="Delivery Address" rows="2" id="cust-addr"></textarea>
+            </div>
+
+            <button
+                class="w-full py-4 bg-amber-400 text-amber-950 font-black rounded-xl hover:brightness-105 transition-all text-sm mb-2"
+                onclick="orderWhatsApp()">ORDER VIA WHATSAPP</button>
+            <button class="w-full py-4 bg-primary text-on-primary font-black rounded-xl hover:brightness-110"
+                onclick="placeOrder()">PLACE ORDER NOW</button>
+        </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <main id="main-content" class="pt-16 min-h-screen">
+
+        <!-- DEALS VIEW -->
+        <div id="deals-view" class="view">
+            <section class="px-6 md:px-12 py-10">
+                <div
+                    class="relative overflow-hidden rounded-2xl bg-primary-dim p-10 text-white min-h-[300px] flex flex-col justify-center">
+                    <img class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-multiply"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVrmqAvMF3Mr6WiFKI2MCLXRCw5_FtuxYUXevhFn_cZbkoOj6I4o5JQPhEw0H6OJ64j-DjYJrJNQfeV6yDu_8w-wbNmhPpw14FqOO8Mm6GBXBzXZGW1TBEUQStLmkCEm2gtk7dPaJQuO4QQKP0ezhT7OtNOevwJsspgBRt5ahp411oWk7IaRpwES7n43ELCpziNvPvifCudPjmUP7JboLgoEUGRuDucP7m5N41eCrFMJ_XDqZer8wN49eMfqDnHanWNOAOdhnzdww">
+                    <div class="relative z-10">
+                        <span
+                            class="inline-block px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-black uppercase tracking-widest rounded-full mb-4">Limited
+                            Time</span>
+                        <h1 class="text-4xl md:text-6xl font-black italic tracking-tighter mb-4">Exclusive Deals &
+                            Combos</h1>
+                        <p class="max-w-2xl text-lg opacity-80">Karachi's favorite flavors at unbeatable prices.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category Tabs -->
+            <section class="px-6 md:px-12 mb-8 flex gap-4 overflow-x-auto no-scrollbar pb-4">
+                <button class="bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm whitespace-nowrap">Super
+                    Deals</button>
+                <button class="bg-neutral-100 px-6 py-2.5 rounded-full font-bold text-sm whitespace-nowrap"
+                    onclick="switchView('menu')">Family Deals</button>
+                <button class="bg-neutral-100 px-6 py-2.5 rounded-full font-bold text-sm whitespace-nowrap"
+                    onclick="switchView('menu')">Pizza Deals</button>
+            </section>
+
+            <!-- Super Deals Grid -->
+            <section class="px-6 md:px-12 pb-20">
+                <h2 class="text-3xl font-black italic text-red-700 mb-8 font-headline">Super Deals</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- D1 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-500">
+                        <div class="h-56 relative overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqTUtZ9bPGv5wmKkfnBjL3VZB7zWsodi4N5fkIS0D6tft9sPOF4viabL1nShvAwcuBmj7UvAvC1OIpjuVz5IPIhqX1llnBr2KljSDUGZKwbRgutlOj_jz8o_LBdBxGN-Kzr-m5-O6TENr3jm9fa9Q6NRg--hWF5xH4Bbt71nhoKi5V5DL1w9syyymVLl_snu3TNjveYiQQIIu8moEK0nuNMZmKPG4CHuq7bxFH7wFq_ADPF8R7gCJ3MyYrkEFX6cfy1RTID5oaOdI">
+                            <div
+                                class="absolute top-4 right-4 bg-red-700 text-white font-black py-2 px-4 rounded-xl italic">
+                                Rs. 2900</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3">Super Deal D1</h3>
+                            <p class="text-sm text-neutral-500 mb-6">2 Large Pizza (Choice of flavors) + Free Drink (1.5
+                                Ltr)</p>
+                            <button
+                                class="mt-auto w-full py-3 bg-secondary-container text-on-secondary-container font-black rounded-xl"
+                                onclick="addToCart('Super Deal D1', 2900, 'D1-img')">ADD TO SELECTION</button>
+                        </div>
+                    </div>
+                    <!-- D2 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-500">
+                        <div class="h-56 relative overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTjPKDaiuj0Pg5b4uxZY6x-1CjIP_y78KFEuyQ4JIXFfsjd3JxLhAo7e2TctEfBYajT-LSxbnro-PMe5zlraAKdTLeC3EdTknoz30C23b1EgTe8BciCYL4KKfIklp29zV1O4h-mMIKYxhsC7J-CFzsPqfSge3_kJALIf3R6RlxwkInGl6PO-Jy-FSYak8bo9sSckZqWTxrppWDqKwzkAOjWovhufVC4By8ErZYHYirEBLPbRhb3wE0MYAuJ2VHcQRsKzWCGWdDnHs">
+                            <div
+                                class="absolute top-4 right-4 bg-red-700 text-white font-black py-2 px-4 rounded-xl italic">
+                                Rs. 2700</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3">Super Deal D2</h3>
+                            <p class="text-sm text-neutral-500 mb-6">1 Large + 1 Medium + 1 Regular Pizza + 1.5 Ltr
+                                Drink</p>
+                            <button
+                                class="mt-auto w-full py-3 bg-secondary-container text-on-secondary-container font-black rounded-xl"
+                                onclick="addToCart('Super Deal D2', 2700, 'D2-img')">ADD TO SELECTION</button>
+                        </div>
+                    </div>
+                    <!-- D3 -->
+                    <div
+                        class="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col group hover:shadow-xl transition-all duration-500">
+                        <div class="h-56 relative overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzCHik3pohxMqjLg34BHuGrpmgY1aCfUXi8WtfO5ws32EkXgEsLp3CuQ2FQyiTNtJbRQTSK_v5wV7zEw399S4Sr6OMtgKmVOrW3Uqh87t3ipykvEY5cWZ40HZtiZm4buQaGJGe6GxNhglKEIfxgWFmZpyQwSmQiCYDHbV7HQrFdjMwzStxKwItUL3zUG85-5VY500o0CPzjFSRtBhscNanlgkRV7q0NSjQ2geK1qRvZsegdlq-SlwM1Q29-S-UUD7k00LfDLzyDWQ">
+                            <div
+                                class="absolute top-4 right-4 bg-red-700 text-white font-black py-2 px-4 rounded-xl italic">
+                                Rs. 3350</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-3">Super Deal D3</h3>
+                            <p class="text-sm text-neutral-500 mb-6">4 Zinger Burgers + 1 Pcs Hot Wings (Full) + 1 Large
+                                Pizza + 1.5 Ltr Drink</p>
+                            <button
+                                class="mt-auto w-full py-3 bg-secondary-container text-on-secondary-container font-black rounded-xl"
+                                onclick="addToCart('Super Deal D3', 3350, 'D3-img')">ADD TO SELECTION</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combo Deals -->
+                <div class="mt-20">
+                    <h2 class="text-3xl font-black italic text-red-700 mb-8 font-headline">Pizza & Combo Deals</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- A1 -->
+                        <div class="bg-white rounded-2xl p-4 flex gap-6 hover:shadow-md transition-shadow">
+                            <img class="w-32 h-32 rounded-xl object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDokfhBTreYKGSlycfWvx6ACJbQ_ukhyMEeFOTNFhZ5KRXvlVQenO2ACN6hl3BA4pljs_wygxxPdY0mZWZzqcASwRcJeV2iFtErPdJPFoOWxJLZ13XznJwitpkRImwkqmRHvap9CXXCgLziVVGRYdQD4kj_LKEPxeMZHAbrj9SnhjKNOhy9ZquEv6n7qR9ZONQWCS0FGb_ePxf5E9zY4bdNXqS3Cwl-t2IsM6LsjlccXY2uS1zxHXvYCfs4uLILKFXnKAfYuIws1tc">
+                            <div class="flex flex-col justify-between py-1 flex-1">
+                                <div>
+                                    <h3 class="font-bold text-lg">Deal A1</h3>
+                                    <p class="text-xs text-neutral-500">1 Regular Pizza + 1 Crispy Drum Pc + Drink (R)
+                                    </p>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xl font-black text-red-700">Rs. 600</span>
+                                    <button class="h-8 w-8 bg-primary text-white rounded-lg"
+                                        onclick="addToCart('Deal A1', 600, 'A1-img')">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- B9 -->
+                        <div class="bg-white rounded-2xl p-4 flex gap-6 hover:shadow-md transition-shadow">
+                            <img class="w-32 h-32 rounded-xl object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVgwVEwM4PEnyAfxcaor-zoZzAKU5YcLyVrixHfBtGKMPvp385bh_HNqM3Jm47YuFMxyBLvdFDkYI8g3na76xUmyIiDS_Zk7vESS3uin6f3-RBLQAJdDuzU5PnJmY3VuDvBL1tncaajbWSxInH0yXyRF3PuXVwH5y4_Y2MbNOwDXLQvfgxoYTlTBUptkjBKI2s5e0pRNCbdm0bE5BhSEFGJ4xTDukbQOGCTs9cGvUEu8-PMqSyARXjNFMfkBOt10JjN3XsPEwyD9c">
+                            <div class="flex flex-col justify-between py-1 flex-1">
+                                <div>
+                                    <h3 class="font-bold text-lg">Deal B9</h3>
+                                    <p class="text-xs text-neutral-500">1 Zinger Burger + 1 Crispy Drum Pc + Drink (R)
+                                    </p>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xl font-black text-red-700">Rs. 510</span>
+                                    <button class="h-8 w-8 bg-primary text-white rounded-lg"
+                                        onclick="addToCart('Deal B9', 510, 'B9-img')">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bar B Q -->
+                <div class="mt-20">
+                    <div
+                        class="bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm flex flex-col md:flex-row border border-neutral-100">
+                        <img class="md:w-1/2 h-80 md:h-auto object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhe4ss4vNyEQ7eGg_zAhiKNgKpoznOTGtZoXZvSIjGSCGJdJ5wx4FDHhn0LoXu0pgNJ6ypJepxCdVO10o83PgcQRF_V7hhcB5EZW_hSH2JwXZNxjZ1zZgjsp-fZqccIDhAFIxnX_G4pIXNrrKcl0IKlVdgS_9IWhf_1_M05uH0z_-wgLRvRtWHQ_3UF8fLevq65RtW527ourojDyrHFUAnkZmHLZQXCleCbCTn7R2D5DcrYNZ3uY2pEe2wuLDbevfYFO9ZdvYM32s">
+                        <div class="p-10 md:w-1/2 flex flex-col justify-center">
+                            <h3 class="text-3xl font-black italic mb-2">Bar B Q Deal R1</h3>
+                            <p class="text-on-surface-variant font-bold text-xs uppercase tracking-[0.2em] mb-6">The
+                                Master Platter</p>
+                            <p class="text-neutral-500 mb-8 leading-relaxed">Reshmi Kabab (1), Malai Boti (1), 1 Chicken
+                                Leg Tikka, 2 Paratha, Raita, and 1 Drink (500ml).</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-4xl font-black text-red-700 italic">Rs. 900</span>
+                                <button
+                                    class="px-8 py-4 bg-secondary-container text-on-secondary-container font-black rounded-2xl hover:-translate-y-1 transition duration-300"
+                                    onclick="addToCart('Bar B Q Deal R1', 900, 'R1-img')">ADD PLATTER</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- MENU VIEW -->
+        <div id="menu-view" class="view hidden">
+            <section class="relative h-[450px] overflow-hidden bg-primary mb-12 flex items-center">
+                <img class="absolute inset-0 w-full h-full object-cover opacity-60"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTiXb3CkHNSu41V1euuBL2W7pEjLYxCfEopasJfHmHrctICX8uxZAPiW6gyKZQS-OO7W1XjDCrMcUXG9LW1zgOubplsCghm67nzNNPA0Eh_VXEWNNRq_BFyUXKGZmmniuCZRXtSdcDjUI3aCiFfJsP0ebFnVeSxKqi0xw5pO49a0xIpIehAKTqZzFCvfzRC_T75NNy_hZi5nNPe5EXQENkSuaJ8KTTEupi4gfnU9nFSyXk8FXseS2AxWKvk_wd_OkA7EaKwxg8Df8">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"></div>
+                <div class="relative z-10 max-w-7xl mx-auto px-6 text-white">
+                    <span
+                        class="bg-secondary-container text-on-secondary-container font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-widest mb-6 inline-block">Flash
+                        Menu</span>
+                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter italic leading-none mb-4">
+                        FEAST<br>FAMILY 1</h2>
+                    <div class="flex items-baseline gap-4">
+                        <span class="text-5xl font-black text-secondary-container italic">Rs. 2400</span>
+                        <button
+                            class="bg-white text-black px-8 py-3 rounded-full font-black text-xs hover:scale-105 transition"
+                            onclick="addToCart('Family Deal 1', 2400, 'F1-img')">GET IT NOW</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dynamic Category Bar -->
+            <nav
+                class="sticky top-[64px] z-40 bg-white/95 backdrop-blur shadow-sm py-4 mb-12 overflow-x-auto no-scrollbar px-6">
+                <div class="max-w-7xl mx-auto flex gap-3">
+                    <button
+                        class="bg-primary text-white px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest">Pizzas</button>
+                    <button
+                        class="bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200">Burgers</button>
+                    <button
+                        class="bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200">Fried
+                        Chicken</button>
+                    <button
+                        class="bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200">B.B.Q</button>
+                    <button
+                        class="bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200">Pastas</button>
+                </div>
+            </nav>
+
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-32">
+                <!-- Product 1: Pizza -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50">
+                    <div class="h-60 relative overflow-hidden">
+                        <img class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOTpRyVgS-6S3IHwr8sf6mG00rvkkGxvG2-VovKzjmd9CRHARSR-6_-Ma6TqdA0gVPDxmJFO7jVom2u25Raxd2M89JB_CYXR3PmMHt57KGfUNeG9DoitAvu0QNWBqqHhEYBgOb-AW7rwMhg-U03eC1MfwySIhJeqmmY7SaI6iqJaUssepCU2FkINeN94DKmlky6r9syLb8RKatw1KnW8iUwUse0fvWHE3v-yC3zZ5HQLKMmWHu0K1tNmpCK_DG9deA-SyogkyIq3c">
+                        <span
+                            class="absolute top-4 left-4 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Best
+                            Seller</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-black text-xl mb-2">Chicken Tikka</h3>
+                        <p class="text-sm text-neutral-500 mb-6">Smoky tikka chunks, Karachi spices, and mozzarella.</p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-2xl font-black">Rs. 800</span>
+                            <button
+                                class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition"
+                                onclick="addToCart('Chicken Tikka Pizza', 800, 'p1-img')">+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2: Burger -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50">
+                    <div class="h-60 relative overflow-hidden">
+                        <img class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw1rWxMJ3_y0Fy235QhFAXLAEx_-y_r7Dd7ouVUgcG3A47-QzSDW2yr7D5aQ2odjVf8TH2v_HHRrxJ-hq1YNhXQBlNfMapnIfklUhFGJmrYrC5wViRPRBTRBaEKvfuPZvSNLE5MauBKcY1tHghP_Z940Rx2lgED1eFbz8aKPd0qUP-yCvr9EMCm-cbINkcWUR81fnxtlJQWJlqlWrmVYSZj1ltsvkQwKOD4Xtc2DJmesWdlaQ1QC_J5lej_VpNbPiNLHZPDbrUdR4">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-black text-xl mb-2">Crunchy Zinger</h3>
+                        <p class="text-sm text-neutral-500 mb-6">Deep fried crispy fillet, iceberg, and Al-Baik mayo.
+                        </p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-2xl font-black">Rs. 450</span>
+                            <button
+                                class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition"
+                                onclick="addToCart('Crunchy Zinger Burger', 450, 'b1-img')">+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3: Fried Chicken -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50">
+                    <div class="h-60 relative overflow-hidden">
+                        <img class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRBm-SxNTaiaz5K3UXLFxgpnlbgZf48wQlLe1d8Pn7QnEGszrPhKVU_1ts0TSEjuNq9bwmbSgk9tpV9sEKjVqeBfhgmTq2oAdfMpVP-ogE8lCqEeLjUiRnMBfzur61uDZFSVGH3ipbdGNrCE0OMWzbMxZj-Q2D6rcCHdC-W09YhkuheTR8ILYlzKTLCt-Xge1YoCQFPPiKULEgmQicQzk50fvePXAp3ldDO8WOBom7hpRG_jLGEDcPYllLrsq9AFHuJ7Fz6_Mb1W8">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-black text-xl mb-2">Fried Chicken (5pc)</h3>
+                        <p class="text-sm text-neutral-500 mb-6">Original secret recipe breaded drumsticks, fried fresh.
+                        </p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-2xl font-black">Rs. 850</span>
+                            <button
+                                class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition"
+                                onclick="addToCart('Fried Chicken (5 Pcs)', 850, 'f1-img')">+</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4: Pasta -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50">
+                    <div class="h-60 relative overflow-hidden">
+                        <img class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-XkRbjCypQEcVDaDCxofiUyIAMSph6ef_Jj0VN2dshJS2qFVeKEv4IDUGQSKQ7RxAgcpHFTurWQ2p_XsrURxzyGgUpoIHw4oHU8QCSddsHnm2iQbhDbV2B7s81_Nkj3FM4CY0AXS_YKoin7vXPEDa2QCAtaioRmkS-p2RwVexNEMuTfD-d9noh0yWViXQdRR9yibDo4Hh8QUuIpPLuWbNzRgfs4IskDlMgFSYkbvACFU_23VXgeFXysj1hnyw9jfW9qJXJDTUdA8">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-black text-xl mb-2">Creamy Alfredo</h3>
+                        <p class="text-sm text-neutral-500 mb-6">Penne tossed in rich white sauce with grilled chicken.
+                        </p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-2xl font-black">Rs. 650</span>
+                            <button
+                                class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition"
+                                onclick="addToCart('Creamy Alfredo Pasta', 650, 'pa1-img')">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOCATIONS VIEW -->
+        <div id="locations-view" class="view hidden">
+            <section class="relative h-[614px] flex items-center overflow-hidden">
+                <img class="absolute inset-0 w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9Ljy7LHmO_5atcXTVFDdDSX1v7UohasGUv6VoDZLRTLNuXK_m7dyckXgigH4kfkA2PBOX3KeWH-4kvUv409sXlfevH6xnyb80b3wI2BUwMNFd-j6CKjCgcp0LUCEGU6oigFI10dSYbZucF_z3r_9FQY4DNAgbNwueISY-0E7-GABOPb6iq8GdujH3NFrwna2KRx5PElQOsGRooCwCPKhhxqXQZQVhrm5gDTfuOcBzjwDieIZwEnQo6wL0mZ-P0JDKZbRNj3lYNZE">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+                <div class="relative z-10 max-w-7xl mx-auto px-6 w-full text-white">
+                    <h1 class="text-6xl md:text-8xl font-black italic mb-6 tracking-tighter">Find Us -<br><span
+                            class="text-secondary-container">City Garden</span></h1>
+                    <p class="max-w-xl text-xl opacity-80 mb-10 leading-relaxed font-medium">Authentic recipes by
+                        Karachi Nimco, served fresh in the heart of Khairpur. Visit us for an unforgettable experience.
+                    </p>
+                    <div class="flex gap-4">
+                        <button
+                            class="bg-secondary-container text-on-secondary-container px-10 py-5 rounded-3xl font-black flex items-center gap-3 active:scale-95 transition">
+                            <span class="material-symbols-outlined">directions</span> GET DIRECTIONS
+                        </button>
+                        <button
+                            class="bg-white/10 backdrop-blur-md px-10 py-5 rounded-3xl font-black flex items-center gap-3 text-white border border-white/20 active:scale-95 transition">
+                            <span class="material-symbols-outlined">call</span> 0304-8012842
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dynamic Info Bento -->
+            <section class="max-w-7xl mx-auto px-6 -mt-24 relative z-20 pb-40">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <div class="lg:col-span-4 space-y-8">
+                        <div class="bg-white rounded-3xl p-10 shadow-2xl">
+                            <h2 class="text-3xl font-black italic mb-8 text-primary">Get In Touch</h2>
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-5">
+                                    <span class="material-symbols-outlined text-primary text-3xl">phone_in_talk</span>
+                                    <div>
+                                        <p class="text-[10px] font-black uppercase opacity-40 mb-1">Hotline</p>
+                                        <p class="text-xl font-black">0304-8012842</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-5">
+                                    <span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+                                    <div>
+                                        <p class="text-[10px] font-black uppercase opacity-40 mb-1">Address</p>
+                                        <p class="text-sm font-medium leading-relaxed">City Garden Mirwah Canal
+                                            Road,<br>Khairpur Mir's, Sindh</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="lg:col-span-8 bg-neutral-100 rounded-3xl overflow-hidden shadow-2xl relative min-h-[500px]">
+                        <img class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH1K4l3D3A6P4Jp5L5M7R9K1G2F3E4D5C6B7A8N9M0L1K2J3I4H5G6F7E8D9C0B1A2">
+                        <div
+                            class="absolute bottom-6 left-6 right-6 glass-panel p-6 rounded-3xl flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="material-symbols-outlined text-primary text-3xl">near_me</span>
+                                <p class="font-black text-sm">Tap here to view on Google Maps</p>
+                            </div>
+                            <button class="bg-primary text-white px-6 py-3 rounded-2xl font-black text-xs">OPEN
+                                MAP</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 text-white py-20 px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-2">
+                <div class="bg-white p-3 rounded-[30px] shadow-lg inline-flex items-center justify-center mb-8 overflow-hidden">
+                    <img src="logo.jpg" alt="Al-Baik Pizza Logo" class="h-24 w-auto object-contain">
+                </div>
+                <p class="text-neutral-500 max-w-sm mb-10 leading-relaxed">A premium dining experience Powered by
+                    Karachi Nimco. Quality you can trust, taste you will remember forever.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-neutral-400 hover:text-red-600 transition-colors"><span
+                            class="material-symbols-outlined">social_leaderboard</span></a>
+                    <a href="#" class="text-neutral-400 hover:text-red-600 transition-colors"><span
+                            class="material-symbols-outlined">photo_camera</span></a>
+                    <a href="#" class="text-neutral-400 hover:text-red-600 transition-colors"><span
+                            class="material-symbols-outlined">videocam</span></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-black uppercase tracking-[0.2em] text-xs text-primary mb-8">Navigation</h4>
+                <div class="flex flex-col gap-4 text-neutral-400 font-bold text-sm">
+                    <a onclick="switchView('menu')" class="cursor-pointer hover:text-red-600">Our Menu</a>
+                    <a onclick="switchView('deals')" class="cursor-pointer hover:text-red-600">Special Deals</a>
+                    <a onclick="switchView('locations')" class="cursor-pointer hover:text-red-600">Find Us</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-black uppercase tracking-[0.2em] text-xs text-primary mb-8">Hotline</h4>
+                <p class="text-neutral-400 font-black text-lg mb-2">0304-8012842</p>
+                <p class="text-neutral-500 text-xs">Delivery available across Khairpur city area.</p>
+            </div>
+        </div>
+        <div
+            class="mt-20 pt-10 border-t border-neutral-800 text-center text-neutral-600 text-[10px] font-bold uppercase tracking-widest">
+            © 2024 Al-Baik Pizza (By Karachi Nimco). All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        let cart = [];
+
+        function switchView(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+            document.getElementById(viewId + '-view').classList.remove('hidden');
+
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.remove('text-red-700', 'border-b-2', 'border-red-700');
+                l.classList.add('text-neutral-600');
+            });
+            document.getElementById('nav-' + viewId).classList.add('text-red-700', 'border-b-2', 'border-red-700');
+            document.getElementById('nav-' + viewId).classList.remove('text-neutral-600');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.location.hash = viewId;
+        }
+
+        function openCart() {
+            document.getElementById('cartSidebar').classList.remove('translate-x-full');
+        }
+
+        function closeCart() {
+            document.getElementById('cartSidebar').classList.add('translate-x-full');
+        }
+
+        function addToCart(name, price, img) {
+            cart.push({ name, price, id: Date.now() });
+            updateCartUI();
+            openCart(); // Show cart immediately
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const countBadge = document.getElementById('cart-count');
+            const totalEl = document.getElementById('cart-total');
+
+            container.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price;
+                const el = document.createElement('div');
+                el.className = 'p-4 bg-white border border-neutral-100 rounded-2xl flex items-center justify-between cart-item-anim';
+                el.innerHTML = `
+                <div>
+                    <p class="font-black text-sm">${item.name}</p>
+                    <p class="text-xs text-red-700 font-bold">Rs. ${item.price}</p>
+                </div>
+                <button onclick="removeFromCart(${item.id})" class="text-neutral-400 hover:text-red-600">
+                    <span class="material-symbols-outlined text-lg">delete</span>
+                </button>
+            `;
+                container.appendChild(el);
+            });
+
+            countBadge.innerText = cart.length;
+            totalEl.innerText = 'Rs. ' + total;
+        }
+
+        function orderWhatsApp() {
+            if (cart.length === 0) return alert('Select some items first!');
+            const name = document.getElementById('cust-name').value;
+            const msg = `Hi Al-Baik! I want to order: ${cart.map(i => i.name).join(', ')}. Total: Rs. ${cart.reduce((a, b) => a + b.price, 0)}. For: ${name}`;
+            window.open(`https://wa.me/923048012842?text=${encodeURIComponent(msg)}`);
+        }
+
+        function placeOrder() {
+            if (cart.length === 0) return alert('Your cart is empty');
+            alert('Order placed successfully! We will contact you shortly.');
+            cart = [];
+            updateCartUI();
+            closeCart();
+        }
+
+        // Init
+        window.onload = () => {
+            const h = window.location.hash.replace('#', '') || 'deals';
+            switchView(h);
+        };
+    </script>
+
+</body>
+
+</html>

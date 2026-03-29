@@ -374,99 +374,23 @@
             <nav
                 class="sticky top-[64px] z-40 bg-white/95 backdrop-blur shadow-sm py-4 mb-12 overflow-x-auto no-scrollbar px-6">
                 <div class="max-w-7xl mx-auto flex gap-3">
-                    <button
-                        class="bg-primary text-white px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest">Pizzas</button>
-                    <button
-                        class="bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200">Burgers</button>
-                    <button
-                        class="bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200">Fried
-                        Chicken</button>
-                    <button
-                        class="bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200">B.B.Q</button>
-                    <button
-                        class="bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200">Pastas</button>
+                    <button onclick="filterMenu('Pizzas')" id="cat-Pizzas"
+                        class="category-btn bg-primary text-white px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest transition-all">Pizzas</button>
+                    <button onclick="filterMenu('Burgers')" id="cat-Burgers"
+                        class="category-btn bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all">Burgers</button>
+                    <button onclick="filterMenu('Fried Chicken')" id="cat-Fried Chicken"
+                        class="category-btn bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all">Fried Chicken</button>
+                    <button onclick="filterMenu('Fast Food')" id="cat-Fast Food"
+                        class="category-btn bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all">Fast Food</button>
+                    <button onclick="filterMenu('B.B.Q')" id="cat-B.B.Q"
+                        class="category-btn bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all">B.B.Q</button>
+                    <button onclick="filterMenu('Pastas')" id="cat-Pastas"
+                        class="category-btn bg-neutral-100 text-neutral-500 px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-widest hover:bg-neutral-200 transition-all">Pastas</button>
                 </div>
             </nav>
 
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-32">
-                <!-- Product 1: Pizza -->
-                <div
-                    class="bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50">
-                    <div class="h-60 relative overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOTpRyVgS-6S3IHwr8sf6mG00rvkkGxvG2-VovKzjmd9CRHARSR-6_-Ma6TqdA0gVPDxmJFO7jVom2u25Raxd2M89JB_CYXR3PmMHt57KGfUNeG9DoitAvu0QNWBqqHhEYBgOb-AW7rwMhg-U03eC1MfwySIhJeqmmY7SaI6iqJaUssepCU2FkINeN94DKmlky6r9syLb8RKatw1KnW8iUwUse0fvWHE3v-yC3zZ5HQLKMmWHu0K1tNmpCK_DG9deA-SyogkyIq3c">
-                        <span
-                            class="absolute top-4 left-4 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Best
-                            Seller</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-black text-xl mb-2">Chicken Tikka</h3>
-                        <p class="text-sm text-neutral-500 mb-6">Smoky tikka chunks, Karachi spices, and mozzarella.</p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-2xl font-black">Rs. 800</span>
-                            <button
-                                class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition"
-                                onclick="addToCart('Chicken Tikka Pizza', 800, 'p1-img')">+</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 2: Burger -->
-                <div
-                    class="bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50">
-                    <div class="h-60 relative overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw1rWxMJ3_y0Fy235QhFAXLAEx_-y_r7Dd7ouVUgcG3A47-QzSDW2yr7D5aQ2odjVf8TH2v_HHRrxJ-hq1YNhXQBlNfMapnIfklUhFGJmrYrC5wViRPRBTRBaEKvfuPZvSNLE5MauBKcY1tHghP_Z940Rx2lgED1eFbz8aKPd0qUP-yCvr9EMCm-cbINkcWUR81fnxtlJQWJlqlWrmVYSZj1ltsvkQwKOD4Xtc2DJmesWdlaQ1QC_J5lej_VpNbPiNLHZPDbrUdR4">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-black text-xl mb-2">Crunchy Zinger</h3>
-                        <p class="text-sm text-neutral-500 mb-6">Deep fried crispy fillet, iceberg, and Al-Baik mayo.
-                        </p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-2xl font-black">Rs. 450</span>
-                            <button
-                                class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition"
-                                onclick="addToCart('Crunchy Zinger Burger', 450, 'b1-img')">+</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 3: Fried Chicken -->
-                <div
-                    class="bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50">
-                    <div class="h-60 relative overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRBm-SxNTaiaz5K3UXLFxgpnlbgZf48wQlLe1d8Pn7QnEGszrPhKVU_1ts0TSEjuNq9bwmbSgk9tpV9sEKjVqeBfhgmTq2oAdfMpVP-ogE8lCqEeLjUiRnMBfzur61uDZFSVGH3ipbdGNrCE0OMWzbMxZj-Q2D6rcCHdC-W09YhkuheTR8ILYlzKTLCt-Xge1YoCQFPPiKULEgmQicQzk50fvePXAp3ldDO8WOBom7hpRG_jLGEDcPYllLrsq9AFHuJ7Fz6_Mb1W8">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-black text-xl mb-2">Fried Chicken (5pc)</h3>
-                        <p class="text-sm text-neutral-500 mb-6">Original secret recipe breaded drumsticks, fried fresh.
-                        </p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-2xl font-black">Rs. 850</span>
-                            <button
-                                class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition"
-                                onclick="addToCart('Fried Chicken (5 Pcs)', 850, 'f1-img')">+</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 4: Pasta -->
-                <div
-                    class="bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50">
-                    <div class="h-60 relative overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-XkRbjCypQEcVDaDCxofiUyIAMSph6ef_Jj0VN2dshJS2qFVeKEv4IDUGQSKQ7RxAgcpHFTurWQ2p_XsrURxzyGgUpoIHw4oHU8QCSddsHnm2iQbhDbV2B7s81_Nkj3FM4CY0AXS_YKoin7vXPEDa2QCAtaioRmkS-p2RwVexNEMuTfD-d9noh0yWViXQdRR9yibDo4Hh8QUuIpPLuWbNzRgfs4IskDlMgFSYkbvACFU_23VXgeFXysj1hnyw9jfW9qJXJDTUdA8">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-black text-xl mb-2">Creamy Alfredo</h3>
-                        <p class="text-sm text-neutral-500 mb-6">Penne tossed in rich white sauce with grilled chicken.
-                        </p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-2xl font-black">Rs. 650</span>
-                            <button
-                                class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition"
-                                onclick="addToCart('Creamy Alfredo Pasta', 650, 'pa1-img')">+</button>
-                        </div>
-                    </div>
-                </div>
+            <div id="product-list" class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pb-32">
+                <!-- Products dynamically injected here via JavaScript -->
             </div>
         </div>
 
@@ -601,6 +525,103 @@
     <script>
         let cart = [];
 
+        const menuItems = [
+            // Fast Food Burgers
+            { id: 'b1', name: 'Zinger Burger', price: 380, category: 'Burgers', img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400', desc: 'Crispy fried fillet' },
+            { id: 'b2', name: 'Spicy Burger', price: 400, category: 'Burgers', img: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=400', desc: 'Spicy chicken fillet' },
+            { id: 'b3', name: 'Jalapeno Burger', price: 420, category: 'Burgers', img: 'https://images.unsplash.com/photo-1594212202875-520e50fd80c1?q=80&w=400', desc: 'Loaded with jalapenos' },
+            { id: 'b4', name: 'Mushroom Burger', price: 420, category: 'Burgers', img: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=400', desc: 'Cheesy mushroom delight' },
+            { id: 'b5', name: 'Mighty Burger', price: 550, category: 'Burgers', img: 'https://images.unsplash.com/photo-1586816001966-79b736744398?q=80&w=400', desc: 'Double patty tower' },
+            { id: 'b6', name: 'Chapli Burger', price: 280, category: 'Burgers', img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=400', desc: 'Desi style chapli kabab' },
+            { id: 'b7', name: 'Double Decker', price: 500, category: 'Burgers', img: 'https://images.unsplash.com/photo-1596662951662-411cb3206c8b?q=80&w=400', desc: 'Two layers of joy' },
+            { id: 'b8', name: 'Pizza Burger', price: 460, category: 'Burgers', img: 'https://images.unsplash.com/photo-1608767221051-2b9d04f12ea3?q=80&w=400', desc: 'Pizza inside a burger' },
+            { id: 'b9', name: 'Grilled Burger', price: 480, category: 'Burgers', img: 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=400', desc: 'Flame grilled to perfection' },
+            { id: 'b10', name: 'Chicken Burger', price: 270, category: 'Burgers', img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400', desc: 'Classic chicken patty' },
+
+            // Fast Food Other (Rolls, Fries)
+            { id: 'f1', name: 'Plain Fries', price: 200, category: 'Fast Food', img: 'https://images.unsplash.com/photo-1573080496599-9bf6eaf725d2?q=80&w=400', desc: 'Crispy salted fries' },
+            { id: 'f2', name: 'Masala Fries', price: 210, category: 'Fast Food', img: 'https://images.unsplash.com/photo-1573080496599-9bf6eaf725d2?q=80&w=400', desc: 'Spicy masala coating' },
+            { id: 'f3', name: 'Mayo Fries', price: 250, category: 'Fast Food', img: 'https://images.unsplash.com/photo-1573080496599-9bf6eaf725d2?q=80&w=400', desc: 'Loaded with mayo' },
+            { id: 'f4', name: 'Cheese Fries', price: 380, category: 'Fast Food', img: 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?q=80&w=400', desc: 'Melted cheese topping' },
+            { id: 'f5', name: 'Pizza Fries', price: 450, category: 'Fast Food', img: 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?q=80&w=400', desc: 'Pizza toppings on fries' },
+            { id: 'r1', name: 'Zinger Roll', price: 300, category: 'Fast Food', img: 'https://images.unsplash.com/photo-1626804475297-41609ea2bcce?q=80&w=400', desc: 'Zinger wrapped in paratha' },
+            { id: 'r2', name: 'Jalapeno Roll', price: 280, category: 'Fast Food', img: 'https://images.unsplash.com/photo-1649238383842-882e3def4ff1?q=80&w=400', desc: 'Spicy jalapeno mix' },
+            { id: 'r3', name: 'Chicken Tander Roll', price: 280, category: 'Fast Food', img: 'https://images.unsplash.com/photo-1626804475297-41609ea2bcce?q=80&w=400', desc: 'Tender chicken strips' },
+            { id: 'r4', name: 'Zinger Shawarma', price: 250, category: 'Fast Food', img: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?q=80&w=400', desc: 'Crispy zinger shawarma' },
+
+            // Fried Chicken
+            { id: 'fc1', name: 'Chest Broast', price: 550, category: 'Fried Chicken', img: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=400', desc: 'Crispy chest piece' },
+            { id: 'fc2', name: 'Leg Broast', price: 450, category: 'Fried Chicken', img: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=400', desc: 'Juicy leg piece' },
+            { id: 'fc3', name: 'Crispy Drum Pc', price: 130, category: 'Fried Chicken', img: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=400', desc: 'Single crispy drumstick' },
+            { id: 'fc4', name: 'Hot Wings (Full) 10 Pcs', price: 400, category: 'Fried Chicken', img: 'https://images.unsplash.com/photo-1569691899455-88464f6d3ab1?q=80&w=400', desc: 'Spicy hot wings' },
+            { id: 'fc5', name: 'Hot Shots 20 Pcs', price: 500, category: 'Fried Chicken', img: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=400', desc: 'Bite sized pops' },
+            { id: 'fc6', name: 'Nuggets 10 Pcs', price: 450, category: 'Fried Chicken', img: 'https://images.unsplash.com/photo-1562967914-01efa7e87832?q=80&w=400', desc: 'Classic chicken nuggets' },
+
+            // Pizzas
+            { id: 'pz1', name: 'Chicken Tikka Pizza (R)', price: 450, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'Smoky tikka chunks & onions' },
+            { id: 'pz2', name: 'Chicken Tikka Pizza (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'Smoky tikka chunks & onions' },
+            { id: 'pz3', name: 'Chicken Tikka Pizza (L)', price: 1300, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'Smoky tikka chunks & onions' },
+            { id: 'pz4', name: 'Chicken Fajita Pizza (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400', desc: 'Fajita chicken, onions & bell pepper' },
+            { id: 'pz5', name: 'B.B.Q Pizza (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'B.B.Q chicken & special sauce' },
+            { id: 'pz6', name: 'Cheese Lover Pizza (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=400', desc: 'Loaded with extra cheese' },
+            { id: 'pz7', name: 'Chicken Supreme (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=400', desc: 'Special sauce, sausages, olives' },
+            { id: 'pz8', name: 'Bonfire Pizza (M)', price: 1050, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=400', desc: 'Green pepper, onions, special sauce' },
+            { id: 'pz9', name: 'Shahi Pizza (M)', price: 1050, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=400', desc: 'Topped with shahi sauce' },
+
+            // Pastas
+            { id: 'pa1', name: 'Flaming Pasta', price: 550, category: 'Pastas', img: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=400', desc: 'Spicy flaming flavour' },
+            { id: 'pa2', name: 'Macaroni Pasta', price: 580, category: 'Pastas', img: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=400', desc: 'Classic macaroni' },
+            { id: 'pa3', name: 'Carice Pasta', price: 550, category: 'Pastas', img: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=400', desc: 'Creamy white sauce' },
+
+            // Bar B.Q
+            { id: 'bbq1', name: 'Al-Baik Special Roll', price: 400, category: 'B.B.Q', img: 'https://images.unsplash.com/photo-1649238383842-882e3def4ff1?q=80&w=400', desc: 'House special BBQ Roll' },
+            { id: 'bbq2', name: 'Chicken Chattni Roll', price: 260, category: 'B.B.Q', img: 'https://images.unsplash.com/photo-1649238383842-882e3def4ff1?q=80&w=400', desc: 'Tangy chattni roll' },
+            { id: 'bbq3', name: 'Chicken Mayo Roll', price: 250, category: 'B.B.Q', img: 'https://images.unsplash.com/photo-1649238383842-882e3def4ff1?q=80&w=400', desc: 'Loaded with creamy mayo' },
+            { id: 'bbq4', name: 'Mexican Roll', price: 220, category: 'B.B.Q', img: 'https://images.unsplash.com/photo-1649238383842-882e3def4ff1?q=80&w=400', desc: 'Mexican spicy twist' },
+            { id: 'bbq5', name: 'Kabab Roll', price: 250, category: 'B.B.Q', img: 'https://images.unsplash.com/photo-1626804475297-41609ea2bcce?q=80&w=400', desc: 'Seekh kabab wrapped up' },
+            { id: 'bbq6', name: 'Malai Boti Roll', price: 280, category: 'B.B.Q', img: 'https://images.unsplash.com/photo-1649238383842-882e3def4ff1?q=80&w=400', desc: 'Creamy malai boti magic' }
+        ];
+
+        function filterMenu(category) {
+            // Update Category Buttons Style
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-primary', 'text-white');
+                btn.classList.add('bg-neutral-100', 'text-neutral-500');
+            });
+            const activeBtn = document.getElementById('cat-' + category);
+            if(activeBtn) {
+                activeBtn.classList.remove('bg-neutral-100', 'text-neutral-500');
+                activeBtn.classList.add('bg-primary', 'text-white');
+            }
+
+            // Render Items
+            const productList = document.getElementById('product-list');
+            if(!productList) return;
+            productList.innerHTML = '';
+            
+            const filteredItems = menuItems.filter(item => item.category === category);
+            
+            filteredItems.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50 flex flex-col';
+                el.innerHTML = `
+                    <div class="h-60 relative overflow-hidden flex-shrink-0">
+                        <img class="w-full h-full object-cover" src="${item.img}" alt="${item.name}">
+                        ${item.name.includes('(M)') ? '<span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Best Seller</span>' : ''}
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="font-black text-lg mb-2 leading-tight">${item.name}</h3>
+                        <p class="text-sm text-neutral-500 mb-6 flex-1">${item.desc}</p>
+                        <div class="flex items-center justify-between mt-auto pt-2 border-t border-neutral-100">
+                            <span class="text-2xl font-black text-red-700">Rs.${item.price}</span>
+                            <button class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition hover:brightness-110" onclick="addToCart('${item.name}', ${item.price}, '${item.id}')"><span class="material-symbols-outlined text-lg">add</span></button>
+                        </div>
+                    </div>
+                `;
+                productList.appendChild(el);
+            });
+        }
+
         function switchView(viewId) {
             document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
             const targetView = document.getElementById(viewId + '-view');
@@ -698,6 +719,7 @@
         window.onload = () => {
             const h = window.location.hash.replace('#', '') || 'deals';
             switchView(h);
+            filterMenu('Pizzas'); // Initialize menu to Pizzas
         };
     </script>
 

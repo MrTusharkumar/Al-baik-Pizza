@@ -558,15 +558,20 @@
             { id: 'fc6', name: 'Nuggets 10 Pcs', price: 450, category: 'Fried Chicken', img: 'https://images.unsplash.com/photo-1562967914-01efa7e87832?q=80&w=400', desc: 'Classic chicken nuggets' },
 
             // Pizzas
-            { id: 'pz1', name: 'Chicken Tikka Pizza (R)', price: 450, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'Smoky tikka chunks & onions' },
-            { id: 'pz2', name: 'Chicken Tikka Pizza (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'Smoky tikka chunks & onions' },
-            { id: 'pz3', name: 'Chicken Tikka Pizza (L)', price: 1300, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'Smoky tikka chunks & onions' },
-            { id: 'pz4', name: 'Chicken Fajita Pizza (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400', desc: 'Fajita chicken, onions & bell pepper' },
-            { id: 'pz5', name: 'B.B.Q Pizza (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'B.B.Q chicken & special sauce' },
-            { id: 'pz6', name: 'Cheese Lover Pizza (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=400', desc: 'Loaded with extra cheese' },
-            { id: 'pz7', name: 'Chicken Supreme (M)', price: 800, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=400', desc: 'Special sauce, sausages, olives' },
-            { id: 'pz8', name: 'Bonfire Pizza (M)', price: 1050, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=400', desc: 'Green pepper, onions, special sauce' },
-            { id: 'pz9', name: 'Shahi Pizza (M)', price: 1050, category: 'Pizzas', img: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=400', desc: 'Topped with shahi sauce' },
+            { id: 'pz1', name: 'Chicken Tikka Pizza', category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'Smoky tikka chunks & onions',
+              variants: [ { label: 'S', price: 450 }, { label: 'M', price: 800 }, { label: 'L', price: 1300 } ], defaultVariant: 1 },
+            { id: 'pz2', name: 'Chicken Fajita Pizza', category: 'Pizzas', img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400', desc: 'Fajita chicken, onions & bell pepper',
+              variants: [ { label: 'S', price: 450 }, { label: 'M', price: 800 }, { label: 'L', price: 1300 } ], defaultVariant: 1 },
+            { id: 'pz3', name: 'B.B.Q Pizza', category: 'Pizzas', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400', desc: 'B.B.Q chicken & special sauce',
+              variants: [ { label: 'S', price: 450 }, { label: 'M', price: 800 }, { label: 'L', price: 1300 } ], defaultVariant: 1 },
+            { id: 'pz4', name: 'Cheese Lover Pizza', category: 'Pizzas', img: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=400', desc: 'Loaded with extra cheese',
+              variants: [ { label: 'S', price: 480 }, { label: 'M', price: 800 }, { label: 'L', price: 1400 } ], defaultVariant: 1 },
+            { id: 'pz5', name: 'Chicken Supreme', category: 'Pizzas', img: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=400', desc: 'Special sauce, sausages, olives',
+              variants: [ { label: 'S', price: 480 }, { label: 'M', price: 800 }, { label: 'L', price: 1400 } ], defaultVariant: 1 },
+            { id: 'pz6', name: 'Bonfire Pizza', category: 'Pizzas', img: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=400', desc: 'Green pepper, onions, special sauce',
+              variants: [ { label: 'S', price: 600 }, { label: 'M', price: 1050 }, { label: 'L', price: 1600 } ], defaultVariant: 1 },
+            { id: 'pz7', name: 'Shahi Pizza', category: 'Pizzas', img: 'https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=400', desc: 'Topped with shahi sauce',
+              variants: [ { label: 'S', price: 600 }, { label: 'M', price: 1050 }, { label: 'L', price: 1600 } ], defaultVariant: 1 },
 
             // Pastas
             { id: 'pa1', name: 'Flaming Pasta', price: 550, category: 'Pastas', img: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=400', desc: 'Spicy flaming flavour' },
@@ -581,6 +586,30 @@
             { id: 'bbq5', name: 'Kabab Roll', price: 250, category: 'B.B.Q', img: 'https://images.unsplash.com/photo-1626804475297-41609ea2bcce?q=80&w=400', desc: 'Seekh kabab wrapped up' },
             { id: 'bbq6', name: 'Malai Boti Roll', price: 280, category: 'B.B.Q', img: 'https://images.unsplash.com/photo-1649238383842-882e3def4ff1?q=80&w=400', desc: 'Creamy malai boti magic' }
         ];
+
+        function selectVariant(itemId, variantIndex, btnElement) {
+            const item = menuItems.find(i => i.id === itemId);
+            if (!item || !item.variants) return;
+            
+            const variant = item.variants[variantIndex];
+            
+            // Update Price Text
+            document.getElementById(`price-${itemId}`).innerText = `Rs. ${variant.price}`;
+            
+            // Update Add to Cart Button Action
+            const addBtn = document.getElementById(`add-${itemId}`);
+            const variantName = `${item.name} (${variant.label})`;
+            addBtn.setAttribute('onclick', `addToCart('${variantName}', ${variant.price}, '${itemId}')`);
+            
+            // Update active state of pills
+            const parent = btnElement.parentElement;
+            parent.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-neutral-800', 'text-white');
+                b.classList.add('bg-neutral-100', 'text-neutral-500');
+            });
+            btnElement.classList.remove('bg-neutral-100', 'text-neutral-500');
+            btnElement.classList.add('bg-neutral-800', 'text-white');
+        }
 
         function filterMenu(category) {
             // Update Category Buttons Style
@@ -604,17 +633,38 @@
             filteredItems.forEach(item => {
                 const el = document.createElement('div');
                 el.className = 'bg-white rounded-3xl overflow-hidden shadow-sm group hover:-translate-y-2 transition-all duration-500 border border-neutral-50 flex flex-col';
+                
+                let variantsHtml = '';
+                let currentPrice = item.price;
+                let currentItemName = item.name;
+                
+                if (item.variants) {
+                    const defIdx = item.defaultVariant || 0;
+                    const defVar = item.variants[defIdx];
+                    currentPrice = defVar.price;
+                    currentItemName = `${item.name} (${defVar.label})`;
+                    
+                    variantsHtml = '<div class="flex gap-2 mb-4 mt-2">';
+                    item.variants.forEach((v, idx) => {
+                        const isActive = idx === defIdx;
+                        const btnClass = isActive ? 'bg-neutral-800 text-white' : 'bg-neutral-100 text-neutral-500 hover:bg-neutral-200';
+                        variantsHtml += `<button onclick="selectVariant('${item.id}', ${idx}, this)" class="px-3 py-1 rounded-full text-xs font-bold transition-colors ${btnClass}">${v.label}</button>`;
+                    });
+                    variantsHtml += '</div>';
+                }
+
                 el.innerHTML = `
                     <div class="h-60 relative overflow-hidden flex-shrink-0">
                         <img class="w-full h-full object-cover" src="${item.img}" alt="${item.name}">
-                        ${item.name.includes('(M)') ? '<span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Best Seller</span>' : ''}
+                        ${item.name.toLowerCase().includes('pizza') ? '<span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Best Seller</span>' : ''}
                     </div>
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="font-black text-lg mb-2 leading-tight">${item.name}</h3>
-                        <p class="text-sm text-neutral-500 mb-6 flex-1">${item.desc}</p>
-                        <div class="flex items-center justify-between mt-auto pt-2 border-t border-neutral-100">
-                            <span class="text-2xl font-black text-red-700">Rs.${item.price}</span>
-                            <button class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition hover:brightness-110" onclick="addToCart('${item.name}', ${item.price}, '${item.id}')"><span class="material-symbols-outlined text-lg">add</span></button>
+                        <p class="text-sm text-neutral-500 mb-2 flex-1">${item.desc}</p>
+                        ${variantsHtml}
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-neutral-100">
+                            <span id="price-${item.id}" class="text-2xl font-black text-red-700">Rs. ${currentPrice}</span>
+                            <button id="add-${item.id}" class="h-10 w-10 bg-primary text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition hover:brightness-110" onclick="addToCart('${currentItemName}', ${currentPrice}, '${item.id}')"><span class="material-symbols-outlined text-lg">add</span></button>
                         </div>
                     </div>
                 `;
@@ -717,7 +767,7 @@
 
         // Init
         window.onload = () => {
-            const h = window.location.hash.replace('#', '') || 'deals';
+            const h = window.location.hash.replace('#', '') || 'menu';
             switchView(h);
             filterMenu('Pizzas'); // Initialize menu to Pizzas
         };
